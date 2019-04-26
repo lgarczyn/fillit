@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: brjorgen <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/14 17:44:13 by brjorgen          #+#    #+#              #
-#    Updated: 2019/04/15 20:07:02 by brjorgen         ###   ########.fr        #
+#    Updated: 2019/04/26 17:50:10 by lgarczyn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ SRCS =		./ft_strlen.c		\
 			./ft_strncpy.c		\
 			./ft_isprint.c		\
 			./ft_memdel.c		\
+			./ft_xmalloc.c		\
 			./ft_putstr_fd.c	\
 			./ft_striteri.c		\
 			./ft_strnew.c		\
