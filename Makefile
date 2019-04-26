@@ -14,6 +14,7 @@ NAME = fillit
 
 SRC =	get_next_line.c \
 		field.c \
+		read_file.c \
 		main.c
 
 HEADERS =	libft/libft.h \
