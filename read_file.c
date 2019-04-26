@@ -6,7 +6,7 @@
 /*   By: brjorgen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 17:45:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/04/26 20:04:05 by brjorgen         ###   ########.fr       */
+/*   Updated: 2019/04/26 21:38:37 by brjorgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,68 @@
 #include "get_next_line.h"
 #include "libft.h"
 
-/*
-typedef enum		e_block
+int					check_endline(int fd)
 {
-	b_empty = 0,
-	b_filled = 1,
-}					t_block;
-*/
+	char			*line;
+	int				res;
 
-bool				read_tetri(int fd, t_tetri *out)
-{
-	int		line_pos;
-	int		line_count;
-	char	**line;
-
-	line_pos = 0;
-	line_count = 0;
-	line = NULL;
-	while (line_count++ < 4)
+	res = get_next_line(fd, &line);
+	if (res <= 0 || line[0] != '\n')
 	{
-		get_next_line(fd, line);
-		while (line_pos++ < 4)
-		{
-			if (*line[line_pos] == '.')
-				out->data[line_count][line_pos] = b_empty;
-			if (*line[line_pos] == '#')
-				out->data[line_count][line_pos] = b_filled;
-			if (*line[4] != '\n')
-			{
-				free(line);
-				return (false);
-			}
-		}
-		line_count = 0;
+		free(line);
+		return (res == 0 ? 0 : -1);
 	}
-	return (true);
+	free(line);
+	return (1);
+}
+
+void				ft_realloc(t_tetri *ptr, size_t old_size, size_t new_size)
+{
+	t_tetri			*tmp;
+
+	if (old_size < new_size)
+		return ;
+	tmp = ft_xmalloc(sizeof(t_tetri) * new_size);
+	ft_memcpy(tmp, ptr, old_size);
+}
+
+void				push_tetri(t_array *array, t_tetri tetri)
+{
+	size_t			new_size;
+
+	if (array->len >= array->size)
+	{
+		new_size = array->size ? array->size * 2 : 16;
+		ft_realloc(array->tetris, array->size * sizeof(t_tetri),
+				new_size * sizeof(t_tetri));
+	}
+	array->tetris[array->len++] = tetri;
+}
+
+bool				read_file(t_array *out, char *name)
+{
+	int				fd;
+	t_tetri			tmp;
+	int				res;
+
+	ft_bzero(out, sizeof(t_array));
+	if ((fd = open(name, O_RDONLY)) == -1)
+	{
+		ft_putstr_fd("Error: failed to open file.", 2);
+		return (false);
+	}
+	if (read_tetri(fd, &tmp) == false)
+		return (false);
+	push_tetri(out, tmp);
+	while (1)
+	{
+		res = check_endline(fd);
+		if (res == 0)
+			return (true);
+		if (res == -1)
+			return (false);
+		if (read_tetri(fd, &tmp) == false)
+			return (false);
+		push_tetri(out, tmp);
+	}
 }
