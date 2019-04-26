@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 17:45:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/04/26 21:55:40 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/26 23:36:33 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool				read_line(char *line, t_block *blocks)
 		else
 			return (false);
 	}
-	if (line[4] != '\n')
+	if (line[4] != '\0')
 		return (false);
 	return (true);
 }

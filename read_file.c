@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_tetri.c                                       :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brjorgen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 17:45:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/04/26 21:38:37 by brjorgen         ###   ########.fr       */
+/*   Updated: 2019/04/26 23:35:38 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int					check_endline(int fd)
 	int				res;
 
 	res = get_next_line(fd, &line);
-	if (res <= 0 || line[0] != '\n')
+	if (res <= 0 || line[0] != '\0')
 	{
 		free(line);
 		return (res == 0 ? 0 : -1);
@@ -29,14 +29,15 @@ int					check_endline(int fd)
 	return (1);
 }
 
-void				ft_realloc(t_tetri *ptr, size_t old_size, size_t new_size)
+void				ft_realloc(t_tetri **ptr, size_t old_size, size_t new_size)
 {
 	t_tetri			*tmp;
 
-	if (old_size < new_size)
+	if (old_size > new_size)
 		return ;
 	tmp = ft_xmalloc(sizeof(t_tetri) * new_size);
-	ft_memcpy(tmp, ptr, old_size);
+	ft_memcpy(tmp, *ptr, old_size);
+	*ptr = tmp;
 }
 
 void				push_tetri(t_array *array, t_tetri tetri)
@@ -46,7 +47,7 @@ void				push_tetri(t_array *array, t_tetri tetri)
 	if (array->len >= array->size)
 	{
 		new_size = array->size ? array->size * 2 : 16;
-		ft_realloc(array->tetris, array->size * sizeof(t_tetri),
+		ft_realloc(&array->tetris, array->size * sizeof(t_tetri),
 				new_size * sizeof(t_tetri));
 	}
 	array->tetris[array->len++] = tetri;

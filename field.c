@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 18:11:51 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/26 19:43:51 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/26 22:46:57 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_field				init_field(size_t size)
 		i++;
 	}
 	f.size = size;
-	f.score = 0;
+	f.score = size;
 	return (f);
 }
 
@@ -98,7 +98,7 @@ bool				write_field(t_field *field, t_tetri tetri, t_pos pos)
 		x = 0;
 		while (x < 4)
 		{
-			tetri.data[y][x] = field->blocks[pos.y + y][pos.x + x];
+			field->blocks[pos.y + y][pos.x + x] = tetri.data[y][x];
 			x++;
 		}
 		x = 0;
