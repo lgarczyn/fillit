@@ -29,7 +29,7 @@ INC = -I libft/
 
 LIB = -L libft/ -lft
 
-FLG = -Wall -Wextra -Werror
+FLG = -Wall -Wextra -Werror -g
 
 all: $(NAME)
 
