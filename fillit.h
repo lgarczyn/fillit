@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/26 20:04:28 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/26 20:53:20 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ t_score				score(const t_field *field);
 t_field				*fillit(t_field *field, t_array *array, t_score *bst);
 
 void				display_field(const t_field *field);
+void				display_tetri(const t_tetri *tetri);
+void				display_usage();
 
 t_field				init_field();
 void				free_field(t_field *field);

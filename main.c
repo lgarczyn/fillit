@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 19:54:44 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/26 20:03:58 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/26 20:45:25 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int				main(int argc, char** argv)
 
 	if (argc != 2)
 	{
-		ft_putstr("Usage: fillit TETROMINO_FILE\n");
+		display_usage();
 		return (1);
 	}
 	best_score = INTPTR_MAX;
@@ -35,5 +35,8 @@ int				main(int argc, char** argv)
 	field = init_field(16);
 	result = fillit(&field, &tetris, &best_score);
 	display_field(result);
+	free_field(&field);
+	free_field(result);
+	free(tetris.tetris);
 	return (0);
 }
