@@ -13,6 +13,7 @@
 NAME = fillit
 
 SRC =	get_next_line.c \
+		field.c \
 
 HEADERS =	libft/libft.h \
 			get_next_line.h \
