@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 17:45:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/04/27 00:15:26 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/27 00:35:28 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void				push_tetri(t_array *array, t_tetri tetri)
 	{
 		new_size = array->size ? array->size * 2 : 16;
 		ft_realloc(&array->tetris, array->size, new_size);
+		array->size = new_size;
 	}
 	array->tetris[array->len++] = tetri;
 }
