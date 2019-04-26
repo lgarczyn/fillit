@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/26 17:43:59 by brjorgen         ###   ########.fr       */
+/*   Updated: 2019/04/26 20:04:28 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ bool				read_file(t_array *out, char *name);
 
 t_score				score(const t_field *field);
 t_field				*fillit(t_field *field, t_array *array, t_score *bst);
+
+void				display_field(const t_field *field);
 
 t_field				init_field();
 void				free_field(t_field *field);
