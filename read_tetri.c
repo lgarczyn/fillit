@@ -6,26 +6,13 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 17:45:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/04/26 20:28:04 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/26 21:55:40 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "get_next_line.h"
 #include "libft.h"
-
-bool				check_endline(int fd)
-{
-	char	*line;
-
-	if (get_next_line(fd, &line) <= 0 || line[0] != '\n')
-	{
-		free(line);
-		return (false);
-	}
-	free(line);
-	return (true);
-}
 
 bool				read_line(char *line, t_block *blocks)
 {
@@ -55,14 +42,13 @@ bool				read_tetri(int fd, t_tetri *out)
 	line_count = -1;
 	while (++line_count < 4 && get_next_line(fd, &line) > 0)
 	{
-		res = read_line(line, &(out->data[line_count]));
+		res = read_line(line, (out->data[line_count]));
 		free(line);
 		if (res == false)
 			return (false);
 	}
 	if (line_count != 4)
 		return (false);
-	check_endline(fd);
 	out->used = false;
 	return (true);
 }

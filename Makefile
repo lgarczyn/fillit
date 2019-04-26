@@ -15,6 +15,7 @@ NAME = fillit
 SRC =	get_next_line.c \
 		field.c \
 		read_file.c \
+		read_tetri.c \
 		display.c \
 		main.c
 
