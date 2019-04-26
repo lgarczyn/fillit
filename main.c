@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 19:54:44 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/26 20:45:25 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/26 21:06:49 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "fillit.h"
 #include <stdint.h>
 
-int				main(int argc, char** argv)
+int				main(int argc, char **argv)
 {
 	t_array		tetris;
 	t_field		field;

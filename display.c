@@ -6,14 +6,14 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 20:39:36 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/26 20:56:30 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/26 21:06:28 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 
-void				display_usage()
+void				display_usage(void)
 {
 	ft_putstr("Usage: fillit TETROMINO_FILE\n");
 }
