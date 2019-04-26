@@ -6,12 +6,14 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/26 17:25:18 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/26 17:43:59 by brjorgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include <stdlib.h>
+#ifndef FILLIT_H
+# define FILLIT_H
+# include <stdbool.h>
+# include <stdlib.h>
 
 typedef size_t		t_score;
 typedef size_t		t_coord;
@@ -60,4 +62,4 @@ void				free_field(t_field *field);
 void				increase_field(t_field *field, size_t size);
 bool				check_field(t_field *field, t_tetri tetri, t_pos pos);
 bool				write_field(t_field *field, t_tetri tetri, t_pos pos);
-
+#endif
