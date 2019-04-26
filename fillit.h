@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/26 17:23:48 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/26 17:25:18 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct		s_field
 
 bool				read_tetri(int fd, t_tetri *out);
 bool				validate_tetri(const t_tetri *tetri);
-bool				read_file(t_array *out);
+bool				read_file(t_array *out, char *name);
 
 t_score				score(const t_field *field);
 t_field				*fillit(t_field *field, t_array *array, t_score *bst);
