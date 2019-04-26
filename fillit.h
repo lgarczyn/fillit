@@ -6,11 +6,12 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/26 17:27:29 by brjorgen         ###   ########.fr       */
+/*   Updated: 2019/04/26 17:43:59 by brjorgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
+# define FILLIT_H
 # include <stdbool.h>
 # include <stdlib.h>
 
