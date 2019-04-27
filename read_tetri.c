@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 17:45:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/04/26 23:36:33 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/27 02:47:53 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ bool				read_tetri(int fd, t_tetri *out)
 	if (line_count != 4)
 		return (false);
 	out->used = false;
+	out->height = 4;
+	out->width = 4;
 	return (true);
 }
