@@ -34,10 +34,10 @@ FLG = -Wall -Wextra -Werror -g
 
 all: $(NAME)
 
-libft.a:
+libft/libft.a:
 	cd libft && make
 
-$(NAME):$(OBJ) libft.a
+$(NAME):$(OBJ) libft/libft.a
 	gcc $(OBJ) $(FLG) $(LIB) -o $(NAME)
 
 %.o: %.c $(HEADERS)
