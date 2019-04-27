@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 19:54:44 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/26 21:50:14 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/27 02:13:18 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int				main(int argc, char **argv)
 		display_usage();
 		return (1);
 	}
-	best_score = INTPTR_MAX;
+	best_score = UINT32_MAX;
 	if (read_file(&tetris, argv[1]) == false)
 	{
 		ft_putstr("Error: corrupted file\n");

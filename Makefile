@@ -22,6 +22,7 @@ SRC =	get_next_line.c \
 HEADERS =	libft/libft.h \
 			get_next_line.h \
 			fillit.h \
+			types.h \
 
 OBJ = $(SRC:.c=.o)
 

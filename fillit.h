@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/26 20:53:20 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/27 00:40:11 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 # define FILLIT_H
 # include <stdbool.h>
 # include <stdlib.h>
-
-typedef size_t		t_score;
-typedef size_t		t_coord;
+# include "types.h"
 
 typedef enum		e_block
 {
