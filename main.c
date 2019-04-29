@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 19:54:44 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/29 20:30:30 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/29 20:44:09 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int				main(int argc, char **argv)
 		ft_putstr("Error: corrupted file\n");
 		return (1);
 	}
-	field = init_field(16);
+	field = init_field();
 
 	for (size_t i = 0; i < tetris.count; i++)
 	{
