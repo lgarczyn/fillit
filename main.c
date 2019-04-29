@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 19:54:44 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/27 02:51:26 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/29 18:30:22 by brjorgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int				main(int argc, char **argv)
 	{
 		display_tetri(&tetris.tetris[i]);
 		write_field(&field, tetris.tetris[i], (t_pos){i * 4, 0});
-		display_field(&field);
+		ft_putstr("\n");
 	}
 	display_field(&field);
 
