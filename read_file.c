@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 17:45:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/04/27 00:35:28 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/29 20:32:35 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,9 @@ int					check_endline(int fd)
 	return (1);
 }
 
-void				ft_realloc(t_tetri **ptr, size_t old_size, size_t new_size)
-{
-	t_tetri			*tmp;
-
-	if (old_size > new_size)
-		return ;
-	tmp = ft_xmalloc(sizeof(t_tetri) * new_size);
-	ft_memcpy(tmp, *ptr, old_size * sizeof(t_tetri));
-	*ptr = tmp;
-}
-
 void				push_tetri(t_array *array, t_tetri tetri)
 {
-	size_t			new_size;
-
-	if (array->len >= array->size)
-	{
-		new_size = array->size ? array->size * 2 : 16;
-		ft_realloc(&array->tetris, array->size, new_size);
-		array->size = new_size;
-	}
-	array->tetris[array->len++] = tetri;
+	array->tetris[array->count++] = tetri;
 }
 
 bool				read_file(t_array *out, char *name)
@@ -74,6 +55,8 @@ bool				read_file(t_array *out, char *name)
 		if (res == 0)
 			return (true);
 		if (res == -1)
+			return (false);
+		if (out->count >= MAX_TETRI)
 			return (false);
 		if (read_tetri(fd, &tmp) == false)
 			return (false);

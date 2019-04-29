@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/27 02:47:20 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/29 20:30:14 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 # include <stdbool.h>
 # include <stdlib.h>
 # include "types.h"
+
+#define				MAX_SCORE 11
+#define				MAX_TETRI 26
 
 typedef enum		e_block
 {
@@ -31,31 +34,35 @@ typedef struct		s_pos
 typedef struct		s_tetri
 {
 	t_block			data[4][4];
-	t_tet_coord		width;
-	t_tet_coord		height;
+	t_coord			width;
+	t_coord			height;
 	bool			used;
 }					t_tetri;
 
 typedef struct		s_array
 {
-	t_tetri			*tetris;
-	size_t			size;
-	size_t			len;
+	t_tetri			tetris[MAX_TETRI];
+	size_t			count;
 }					t_array;
 
 typedef struct		s_field
 {
-	t_block			**blocks;
-	t_coord			size;
-	t_score			score;
+	t_block			blocks[MAX_SCORE][MAX_SCORE];
+	t_coord			score;
 }					t_field;
+
+typedef struct		s_score
+{
+	t_coord			best;
+	t_coord			worst;
+	size_t			deviation;
+}					t_score;
 
 bool				read_tetri(int fd, t_tetri *out);
 bool				validate_tetri(const t_tetri *tetri);
 bool				read_file(t_array *out, char *name);
 
-t_score				score(const t_field *field);
-t_field				*fillit(t_field *field, t_array *array, t_score *bst);
+t_field				*fillit(t_field *field, t_array *array, t_score *sc);
 
 void				display_field(const t_field *field);
 void				display_tetri(const t_tetri *tetri);
