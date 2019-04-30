@@ -6,7 +6,7 @@
 /*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 17:45:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/04/30 23:59:52 by brjorgen         ###   ########.fr       */
+/*   Updated: 2019/05/01 00:05:31 by brjorgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void				normalize_tetri(t_tetri *tetri)
 			max_pos.x = MAX(coord.x, max_pos.x);
 			max_pos.y = MAX(coord.y, max_pos.y);
 		}
-		if (coord.x++ == 4)
+		coord.x++;
+		if (coord.x == 4)
 		{
 			coord.x = 0;
 			coord.y++;
