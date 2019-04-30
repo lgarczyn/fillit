@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_tetri.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 17:45:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/05/01 00:08:54 by brjorgen         ###   ########.fr       */
+/*   Updated: 2019/05/01 00:15:10 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ bool				read_tetri(int fd, t_tetri *out)
 	if (line_count != 4)
 		return (false);
 	out->used = false;
-	if (validate_tetri(out))
-		normalize_tetri(out);
-	else
+	if (validate_tetri(out) == false)
 		return (false);
+	normalize_tetri(out);
+	id_tetri(out);
 	return (true);
 }

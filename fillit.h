@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/05/01 01:12:53 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/05/01 01:23:02 by brjorgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # define MAX_SCORE 16
 # define MAX_TETRI 26
+# define TET_COUNT 19
 
 typedef struct		s_pos
 {
@@ -30,6 +31,7 @@ typedef struct		s_tetri
 	t_block			data[4][4];
 	t_coord			width;
 	t_coord			height;
+	t_coord			id;
 	bool			used;
 }					t_tetri;
 
@@ -48,6 +50,7 @@ typedef struct		s_field
 typedef struct		s_state
 {
 	t_pos			positions[MAX_TETRI];
+	t_pos			highest_pos[TET_COUNT];
 	t_coord			size;
 }					t_state;
 
@@ -56,6 +59,7 @@ bool				read_tetri(int fd, t_tetri *out);
 bool				read_file(t_array *out, char *name);
 void				normalize_tetri(t_tetri *tetri);
 bool				validate_tetri(const t_tetri *tetri);
+void				id_tetri(t_tetri *tetri);
 
 void				display_field(const t_field *field);
 void				display_tetri(const t_tetri *tetri);
@@ -68,6 +72,6 @@ void				error();
 t_field				init_field();
 bool				check_field(t_field *field, t_tetri tetri, t_pos pos);
 bool				write_field(t_field *field, t_tetri tetri,
-t_pos pos, t_block val);
+					t_pos pos, t_block val);
 void				unwrite_field(t_field *field, t_tetri tetri, t_pos pos);
 #endif

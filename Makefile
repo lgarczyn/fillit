@@ -19,6 +19,7 @@ SRC =	get_next_line.c \
 		validate_tetri.c \
 		display.c \
 		fillit.c \
+		id_tetri.c \
 		main.c
 
 HEADERS =	libft/libft.h \
