@@ -8,3 +8,9 @@
 * check \n\0 get_next_line
 * remove -g
 * make sure things start in top left
+* display
+
+## PERFORMANCE
+
+* force order of equivalent pieces
+* bitfield
