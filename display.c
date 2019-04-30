@@ -18,6 +18,12 @@ void				display_usage(void)
 	ft_putstr("Usage: fillit TETROMINO_FILE\n");
 }
 
+void				error(void)
+{
+	ft_putstr_fd("error", 1);
+	exit(1);
+}
+
 void				display_field(const t_field *field)
 {
 	t_coord			x;

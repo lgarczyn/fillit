@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 20:42:58 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 21:02:44 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 21:19:58 by brjorgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,28 @@
 
 bool			next_pos(t_pos *pos)
 {
-	if (pos->y == 0)
+	int tmp;
+
+	if (pos->x == pos->y)
 	{
-		pos->y = pos->x + 1;
-		pos->x = 0;
-		if (pos->y >= MAX_SCORE)
-			return (false);
+		pos->x++;
+		pos->y = 0;
+	}
+	else if (pos->y < pos->x)
+	{
+		tmp = pos->y;
+		pos->y = pos->x;
+		pos->x = tmp;
 	}
 	else if (pos->y > pos->x)
-		pos->x++;
-	else
-		pos->y--;
+	{
+		tmp = pos->x;
+		pos->x = pos->y;
+		pos->y = tmp;
+		pos->y++;
+	}
+	if (pos->x >= MAX_SCORE)
+		return (false);
 	return (true);
 }
 
@@ -42,8 +53,8 @@ void			fillit(const t_array *array, t_field *field, t_state *state, t_coord i)
 		{
 			ft_memcpy(state->solution, state->positions, array->count * sizeof(t_pos));
 			state->solution_score = field->score;
-			ft_putstr("best solution\n");
-			display_field(field);
+			//ft_putstr("best solution\n");
+			//display_field(field);
 		}
 		return ;
 	}

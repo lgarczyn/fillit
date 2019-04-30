@@ -42,10 +42,7 @@ bool				read_file(t_array *out, char *name)
 
 	ft_bzero(out, sizeof(t_array));
 	if ((fd = open(name, O_RDONLY)) == -1)
-	{
-		ft_putstr_fd("Error: failed to open file.", 2);
 		return (false);
-	}
 	if (read_tetri(fd, &tmp) == false)
 		return (false);
 	push_tetri(out, tmp);

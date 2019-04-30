@@ -19,7 +19,7 @@ void	*ft_xmalloc(size_t size)
 
 	if (!size || !(tmp = malloc(size)))
 	{
-		ft_putstr_fd("Fatal error: Failed to allocate memory.\n", 2);
+		ft_putstr_fd("error\n", 1);
 		exit(ENOMEM);
 	}
 	ft_bzero(tmp, size);

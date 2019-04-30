@@ -28,10 +28,7 @@ int				main(int argc, char **argv)
 		return (1);
 	}
 	if (read_file(&tetris, argv[1]) == false)
-	{
-		ft_putstr("Error: corrupted file\n");
-		return (1);
-	}
+		error();
 	
 	bzero(&field, sizeof(t_field));
 	bzero(&state, sizeof(state));
@@ -40,7 +37,6 @@ int				main(int argc, char **argv)
 
 	fillit(&tetris, &field, &state, 0);
 
-	ft_putstr("solution:\n");
 	display_solution(&tetris, state.solution);
 	return (0);
 }
