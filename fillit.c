@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 20:42:58 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 05:26:38 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 07:18:42 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,32 +29,47 @@ bool			next_pos(t_pos *pos)
 	return (true);
 }
 
-void			fillit(const t_array *array, t_field *field, t_solution *solution, t_solution *best_solution, t_coord i)
+
+// if (state->field.score == state->best_score_possible)
+// {
+
+// }
+
+void			fillit(const t_array *array, t_field *field, t_state *state, t_coord i)
 {
 	t_pos		pos;
-	t_field		tmp;
+	t_coord		old_score;
 
-	if (field->score >= best_solution->score)
+	if (field->score >= state->solution_score)
 		return;
 	if (i == array->count)
 	{
-		solution->score = field->score;
-		if (solution->score < best_solution->score)
-			*best_solution = *solution;
-		//handle absolute
+		if (field->score < state->solution_score)
+		{
+			ft_memcpy(state->solution, state->positions, array->count * sizeof(t_pos));
+			state->solution_score = field->score;
+			ft_putstr("best solution\n");
+			display_field(field);
+		}
 		return ;
 	}
 	pos = (t_pos){0, 0};
-	tmp = *field;
+	old_score = field->score;
 	do
 	{
 		if (write_field(field, array->tetris[i], pos) == false)
 			continue;
 
-		solution->positions[i] = pos;
+		state->positions[i] = pos;
 
-		fillit(array, field, solution, best_solution, i + 1);
+		fillit(array, field, state, i + 1);
 		
-		*field = tmp;
+		unwrite_field(field, array->tetris[i], pos);
+		field->score = old_score;
+
+		if (state->solution_score == state->best_possible_score)
+			return;
+		if (state->solution_score < state->best_possible_score)
+			ft_putstr("WTFWTFWTF\n");
 	} while(next_pos(&pos));
 }

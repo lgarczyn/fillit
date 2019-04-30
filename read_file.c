@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 17:45:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/04/29 20:32:35 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 07:16:22 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,23 @@ bool				read_file(t_array *out, char *name)
 			return (false);
 		push_tetri(out, tmp);
 	}
+}
+
+t_uint			sqrt_ceil (t_uint n) {
+
+	t_uint		result;
+	t_uint		square;
+
+	result = 0;
+	square = 0;
+	while (square < n) {
+		square += (result * 2 + 1);
+		result++;
+	}
+	return result;
+}
+
+t_coord			get_ideal_score(t_array *array)
+{
+	return (sqrt_ceil(array->count * 4));
 }

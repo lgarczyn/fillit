@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 05:17:34 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 07:20:11 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,15 @@ typedef struct		s_field
 	t_coord			score;
 }					t_field;
 
-typedef struct		s_score
+typedef struct		s_state
 {
-	t_coord			best;
-	t_coord			worst;
-	size_t			deviation;
-}					t_score;
-
-typedef struct		s_solution {
 	t_pos			positions[MAX_TETRI];
-	t_coord			score;
-}					t_solution;
+	t_pos			solution[MAX_TETRI];
+	t_coord			solution_score;
+	t_coord			best_possible_score;
+}					t_state;
 
+t_coord				get_ideal_score(t_array *array);
 bool				read_tetri(int fd, t_tetri *out);
 bool				validate_tetri(const t_tetri *tetri);
 bool				read_file(t_array *out, char *name);
@@ -71,7 +68,7 @@ void				display_field(const t_field *field);
 void				display_tetri(const t_tetri *tetri);
 void				display_usage();
 
-void				fillit(const t_array *array, t_field *field, t_solution *solution, t_solution *best_solution, t_coord i);
+void				fillit(const t_array *array, t_field *field, t_state *state, t_coord i);
 
 t_field				init_field();
 bool				check_field(t_field *field, t_tetri tetri, t_pos pos);
