@@ -6,7 +6,11 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 20:42:58 by lgarczyn          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/05/01 00:20:09 by lgarczyn         ###   ########.fr       */
+=======
+/*   Updated: 2019/05/01 01:09:31 by lgarczyn         ###   ########.fr       */
+>>>>>>> e440fb231f644b92c8b61143dca198efb6ad1f75
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +20,17 @@
 bool		fill(t_array *tet_array, t_field *field, t_state *state, t_coord i)
 {
 	t_pos	pos;
-	t_pos	max_pos;
+	t_pos	max;
 
 	if (i == tet_array->count)
 		return (true);
-	max_pos.x = state->size - tet_array->tetris[i].width;
-	max_pos.y = state->size - tet_array->tetris[i].height;
-	while (pos.y < max_pos.y)
+	max.y = state->size - tet_array->tetris[i].height;
+	max.x = state->size - tet_array->tetris[i].width;
+	pos.y = 0;
+	while (pos.y < max.y)
 	{
 		pos.x = 0;
-		while (pos.x < max_pos.x)
+		while (pos.x < max.x)
 		{
 			if (write_field(field, tet_array->tetris[i], pos, 1))
 			{
