@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 20:42:58 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 07:18:42 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 19:48:29 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ bool			next_pos(t_pos *pos)
 		pos->y--;
 	return (true);
 }
-
-
-// if (state->field.score == state->best_score_possible)
-// {
-
-// }
 
 void			fillit(const t_array *array, t_field *field, t_state *state, t_coord i)
 {
@@ -69,7 +63,5 @@ void			fillit(const t_array *array, t_field *field, t_state *state, t_coord i)
 
 		if (state->solution_score == state->best_possible_score)
 			return;
-		if (state->solution_score < state->best_possible_score)
-			ft_putstr("WTFWTFWTF\n");
 	} while(next_pos(&pos));
 }
