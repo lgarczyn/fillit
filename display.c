@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 20:39:36 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 23:53:23 by brjorgen         ###   ########.fr       */
+/*   Updated: 2019/05/01 01:13:20 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void				display_usage(void)
 
 void				error(void)
 {
-	ft_putstr_fd("error", 1);
+	ft_putstr_fd("error\n", 1);
 	exit(1);
 }
 

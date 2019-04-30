@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 20:42:58 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 23:52:26 by brjorgen         ###   ########.fr       */
+/*   Updated: 2019/05/01 01:09:31 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,18 @@
 
 bool		fill(t_array *tet_array, t_field *field, t_state *state, t_coord i)
 {
-	t_pos		pos;
+	t_pos	pos;
+	t_pos	max;
 
 	if (i == tet_array->count)
 		return (true);
+	max.y = state->size - tet_array->tetris[i].height;
+	max.x = state->size - tet_array->tetris[i].width;
 	pos.y = 0;
-	while (pos.y < state->size - tet_array->tetris[i].height)
+	while (pos.y < max.y)
 	{
 		pos.x = 0;
-		while (pos.x < state->size - tet_array->tetris[i].width)
+		while (pos.x < max.x)
 		{
 			if (write_field(field, tet_array->tetris[i], pos, 1))
 			{
