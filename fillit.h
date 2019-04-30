@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 21:31:59 by brjorgen         ###   ########.fr       */
+/*   Updated: 2019/04/30 23:10:56 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include "types.h"
 
-#define				MAX_SCORE 15
+#define				MAX_SCORE 16
 #define				MAX_TETRI 26
 
 typedef struct		s_pos
@@ -48,14 +48,11 @@ typedef struct		s_field
 typedef struct		s_state
 {
 	t_pos			positions[MAX_TETRI];
-	t_pos			solution[MAX_TETRI];
-	t_coord			solution_score;
-	t_coord			best_possible_score;
+	t_coord			size;
 }					t_state;
 
 t_coord				get_ideal_score(t_array *array);
 bool				read_tetri(int fd, t_tetri *out);
-bool				validate_tetri(const t_tetri *tetri);
 bool				read_file(t_array *out, char *name);
 
 void				display_field(const t_field *field);
@@ -63,7 +60,7 @@ void				display_tetri(const t_tetri *tetri);
 void				display_solution(const t_array *tets, const t_pos *sol);
 void				display_usage();
 
-void				fillit(const t_array *array, t_field *field, t_state *state, t_coord i);
+t_state				fillit(t_array *tet_array);
 void				error();
 
 t_field				init_field();

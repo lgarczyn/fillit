@@ -3,76 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 20:42:58 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 21:19:58 by brjorgen         ###   ########.fr       */
+/*   Updated: 2019/04/30 23:17:52 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 
-bool			next_pos(t_pos *pos)
-{
-	int tmp;
-
-	if (pos->x == pos->y)
-	{
-		pos->x++;
-		pos->y = 0;
-	}
-	else if (pos->y < pos->x)
-	{
-		tmp = pos->y;
-		pos->y = pos->x;
-		pos->x = tmp;
-	}
-	else if (pos->y > pos->x)
-	{
-		tmp = pos->x;
-		pos->x = pos->y;
-		pos->y = tmp;
-		pos->y++;
-	}
-	if (pos->x >= MAX_SCORE)
-		return (false);
-	return (true);
-}
-
-void			fillit(const t_array *array, t_field *field, t_state *state, t_coord i)
+bool		fill(t_array *tet_array, t_field *field, t_state *state, t_coord i)
 {
 	t_pos		pos;
-	t_coord		old_score;
+	
+	if (i == tet_array->count)
+		return true;
 
-	if (field->score >= state->solution_score)
-		return;
-	if (i == array->count)
+	pos.y = 0;
+	while (pos.y < state->size - tet_array->tetris[i].height)
 	{
-		if (field->score < state->solution_score)
+		pos.x = 0;
+		while (pos.x < state->size - tet_array->tetris[i].width)
 		{
-			ft_memcpy(state->solution, state->positions, array->count * sizeof(t_pos));
-			state->solution_score = field->score;
-			//ft_putstr("best solution\n");
-			//display_field(field);
+			if (write_field(field, tet_array->tetris[i], pos, 1))
+			{
+				state->positions[i] = pos;
+
+				if (fill(tet_array, field, state, i + 1))
+					return (true);
+				
+				unwrite_field(field, tet_array->tetris[i], pos);
+			}
+			pos.x++;
 		}
-		return ;
+		pos.y++;
 	}
-	pos = (t_pos){0, 0};
-	old_score = field->score;
-	do
+	return (false);
+}
+
+t_state		fillit(t_array *tet_array)
+{
+	t_field	field;
+	t_state	ret;
+
+	ft_bzero(&field, sizeof(field));
+	ft_bzero(&ret, sizeof(ret));
+
+	ret.size = get_ideal_score(tet_array);
+
+	while (fill(tet_array, &field, &ret, 0) == false)
 	{
-		if (write_field(field, array->tetris[i], pos, 1) == false)
-			continue;
-
-		state->positions[i] = pos;
-
-		fillit(array, field, state, i + 1);
-		
-		unwrite_field(field, array->tetris[i], pos);
-		field->score = old_score;
-
-		if (state->solution_score == state->best_possible_score)
-			return;
-	} while(next_pos(&pos));
+		ret.size++;
+	}
+	return (ret);
 }
