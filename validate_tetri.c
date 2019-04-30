@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_tetri.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 00:07:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/05/01 00:08:07 by brjorgen         ###   ########.fr       */
+/*   Updated: 2019/05/01 01:17:12 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,23 @@ void				normalize_tetri(t_tetri *tetri)
 {
 	t_pos		min_pos;
 	t_pos		max_pos;
-	t_pos		coord;
+	t_pos		pos;
 
 	min_pos = (t_pos){4, 4};
 	max_pos = (t_pos){0, 0};
-	coord.x = 0;
-	coord.y = 0;
-	while (coord.y < 4)
+	pos = (t_pos){0, 0};
+	while (pos.y < 4)
 	{
-		if (tetri->data[coord.y][coord.x])
+		if (tetri->data[pos.y][pos.x])
 		{
-			min_pos.x = MIN(coord.x, min_pos.x);
-			min_pos.y = MIN(coord.y, min_pos.y);
-			max_pos.x = MAX(coord.x, max_pos.x);
-			max_pos.y = MAX(coord.y, max_pos.y);
+			min_pos = (t_pos){MIN(pos.x, min_pos.x), MIN(pos.y, min_pos.y)};
+			max_pos = (t_pos){MAX(pos.x, max_pos.x), MAX(pos.y, max_pos.y)};
 		}
-		coord.x++;
-		if (coord.x == 4)
+		pos.x++;
+		if (pos.x == 4)
 		{
-			coord.x = 0;
-			coord.y++;
+			pos.x = 0;
+			pos.y++;
 		}
 	}
 	shift_tetri(tetri, min_pos);
