@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_tetri.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 17:45:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/04/29 20:10:11 by brjorgen         ###   ########.fr       */
+/*   Updated: 2019/04/30 07:15:20 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void				shift_tetri(t_tetri *tetri, t_pos min_pos)
 		}
 	}
 }
-#include <stdio.h>
 
 void				normalize_tetri(t_tetri *tetri) // work in progress
 {
