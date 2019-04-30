@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 23:10:56 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 23:55:41 by brjorgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <stdlib.h>
 # include "types.h"
 
-#define				MAX_SCORE 16
-#define				MAX_TETRI 26
+# define MAX_SCORE 16
+# define MAX_TETRI 26
 
 typedef struct		s_pos
 {
@@ -65,6 +65,7 @@ void				error();
 
 t_field				init_field();
 bool				check_field(t_field *field, t_tetri tetri, t_pos pos);
-bool				write_field(t_field *field, t_tetri tetri, t_pos pos, t_block val);
+bool				write_field(t_field *field, t_tetri tetri,
+t_pos pos, t_block val);
 void				unwrite_field(t_field *field, t_tetri tetri, t_pos pos);
 #endif

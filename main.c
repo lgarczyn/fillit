@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 19:54:44 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 23:09:45 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 23:49:25 by brjorgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ int				main(int argc, char **argv)
 	}
 	if (read_file(&tetris, argv[1]) == false)
 		error();
-	
 	state = fillit(&tetris);
-
 	display_solution(&tetris, state.positions);
 	return (0);
 }

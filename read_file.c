@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 17:45:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/04/30 07:16:22 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 23:48:47 by brjorgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "get_next_line.h"
 #include "libft.h"
 
-int					check_endline(int fd)
+int			check_endline(int fd)
 {
 	char			*line;
 	int				res;
@@ -29,12 +29,12 @@ int					check_endline(int fd)
 	return (1);
 }
 
-void				push_tetri(t_array *array, t_tetri tetri)
+void		push_tetri(t_array *array, t_tetri tetri)
 {
 	array->tetris[array->count++] = tetri;
 }
 
-bool				read_file(t_array *out, char *name)
+bool		read_file(t_array *out, char *name)
 {
 	int				fd;
 	t_tetri			tmp;
@@ -61,21 +61,22 @@ bool				read_file(t_array *out, char *name)
 	}
 }
 
-t_uint			sqrt_ceil (t_uint n) {
-
+t_uint		sqrt_ceil(t_uint n)
+{
 	t_uint		result;
 	t_uint		square;
 
 	result = 0;
 	square = 0;
-	while (square < n) {
+	while (square < n)
+	{
 		square += (result * 2 + 1);
 		result++;
 	}
-	return result;
+	return (result);
 }
 
-t_coord			get_ideal_score(t_array *array)
+t_coord		get_ideal_score(t_array *array)
 {
 	return (sqrt_ceil(array->count * 4));
 }

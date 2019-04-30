@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   field.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 18:11:51 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 21:04:03 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 23:41:46 by brjorgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 
-t_field				init_field()
+t_field		init_field(void)
 {
 	t_field			f;
 
@@ -21,7 +21,7 @@ t_field				init_field()
 	return (f);
 }
 
-bool				check_field(t_field *field, t_tetri tetri, t_pos pos)
+bool		check_field(t_field *field, t_tetri tetri, t_pos pos)
 {
 	t_coord			x;
 	t_coord			y;
@@ -45,7 +45,7 @@ bool				check_field(t_field *field, t_tetri tetri, t_pos pos)
 	return (true);
 }
 
-bool				write_field(t_field *field, t_tetri tetri, t_pos pos, t_block value)
+bool		write_field(t_field *field, t_tetri tetri, t_pos pos, t_block value)
 {
 	t_coord			x;
 	t_coord			y;
@@ -70,7 +70,7 @@ bool				write_field(t_field *field, t_tetri tetri, t_pos pos, t_block value)
 	return (true);
 }
 
-void				unwrite_field(t_field *field, t_tetri tetri, t_pos pos)
+void		unwrite_field(t_field *field, t_tetri tetri, t_pos pos)
 {
 	t_coord			x;
 	t_coord			y;

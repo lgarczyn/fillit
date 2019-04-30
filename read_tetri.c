@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_tetri.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 17:45:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/04/30 20:56:34 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 23:59:52 by brjorgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void				shift_tetri(t_tetri *tetri, t_pos min_pos)
 {
 	t_coord		x;
 	t_coord		y;
-
 
 	x = 0;
 	y = 0;
@@ -37,31 +36,29 @@ void				shift_tetri(t_tetri *tetri, t_pos min_pos)
 	}
 }
 
-void				normalize_tetri(t_tetri *tetri) // work in progress
+void				normalize_tetri(t_tetri *tetri)
 {
 	t_pos		min_pos;
 	t_pos		max_pos;
-	t_coord		x;
-	t_coord		y;
+	t_pos		coord;
 
 	min_pos = (t_pos){4, 4};
 	max_pos = (t_pos){0, 0};
-	x = 0;
-	y = 0;
-	while (y < 4)
+	coord.x = 0;
+	coord.y = 0;
+	while (coord.y < 4)
 	{
-		if (tetri->data[y][x])
+		if (tetri->data[coord.y][coord.x])
 		{
-			min_pos.x = MIN(x, min_pos.x);
-			min_pos.y = MIN(y, min_pos.y);
-			max_pos.x = MAX(x, max_pos.x);
-			max_pos.y = MAX(y, max_pos.y);
+			min_pos.x = MIN(coord.x, min_pos.x);
+			min_pos.y = MIN(coord.y, min_pos.y);
+			max_pos.x = MAX(coord.x, max_pos.x);
+			max_pos.y = MAX(coord.y, max_pos.y);
 		}
-		x++;
-		if (x == 4)
+		if (coord.x++ == 4)
 		{
-			x = 0;
-			y++;
+			coord.x = 0;
+			coord.y++;
 		}
 	}
 	shift_tetri(tetri, min_pos);
@@ -89,7 +86,6 @@ bool				validate_tetri(const t_tetri *tetri)
 {
 	t_pos	pos;
 	int		ret;
-
 
 	pos.x = 0;
 	pos.y = 0;
@@ -146,7 +142,7 @@ bool				read_tetri(int fd, t_tetri *out)
 	out->used = false;
 	if (validate_tetri(out))
 		normalize_tetri(out);
-	 else
+	else
 		return (false);
 	return (true);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 20:39:36 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 20:28:11 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 23:53:23 by brjorgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void				display_field(const t_field *field)
 		x = 0;
 		while (x < field->score)
 		{
-			ft_putchar(field->blocks[y][x] ? 'A' + field->blocks[y][x] - 1 : '.');
+			ft_putchar(field->blocks[y][x] ? 'A' + field->blocks[y][x] - 1
+			: '.');
 			x++;
 		}
 		ft_putchar('\n');
