@@ -6,7 +6,7 @@
 #    By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/22 17:11:22 by lgarczyn          #+#    #+#              #
-#    Updated: 2015/01/22 17:13:56 by lgarczyn         ###   ########.fr        #
+#    Updated: 2019/05/01 00:09:33 by brjorgen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC =	get_next_line.c \
 		field.c \
 		read_file.c \
 		read_tetri.c \
+		validate_tetri.c \
 		display.c \
 		fillit.c \
 		main.c

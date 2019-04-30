@@ -6,7 +6,7 @@
 /*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 23:55:41 by brjorgen         ###   ########.fr       */
+/*   Updated: 2019/05/01 00:11:02 by brjorgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct		s_state
 t_coord				get_ideal_score(t_array *array);
 bool				read_tetri(int fd, t_tetri *out);
 bool				read_file(t_array *out, char *name);
+void				normalize_tetri(t_tetri *tetri);
+bool				validate_tetri(const t_tetri *tetri);
 
 void				display_field(const t_field *field);
 void				display_tetri(const t_tetri *tetri);
