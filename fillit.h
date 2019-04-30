@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 03:23:35 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 05:17:34 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ typedef struct		s_score
 	size_t			deviation;
 }					t_score;
 
-typedef struct	s_solution {
-	t_pos		positions[MAX_TETRI];
-	t_coord		score;
-}				t_solution;
+typedef struct		s_solution {
+	t_pos			positions[MAX_TETRI];
+	t_coord			score;
+}					t_solution;
 
 bool				read_tetri(int fd, t_tetri *out);
 bool				validate_tetri(const t_tetri *tetri);

@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 20:42:58 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 04:47:25 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 05:26:38 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void			fillit(const t_array *array, t_field *field, t_solution *solution, t_solu
 	t_pos		pos;
 	t_field		tmp;
 
+	if (field->score >= best_solution->score)
+		return;
 	if (i == array->count)
 	{
 		solution->score = field->score;
