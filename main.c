@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 19:54:44 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 07:12:55 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 21:07:45 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,7 @@ int				main(int argc, char **argv)
 
 	fillit(&tetris, &field, &state, 0);
 
-	for (size_t i = 0; i < tetris.count; i++)
-	{
-		printf("%i %i\n", state.solution[i].x, state.solution[i].y);
-	}
-
+	ft_putstr("solution:\n");
+	display_solution(&tetris, state.solution);
 	return (0);
 }

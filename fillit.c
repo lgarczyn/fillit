@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 20:42:58 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 19:48:29 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 21:02:44 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void			fillit(const t_array *array, t_field *field, t_state *state, t_coord i)
 	old_score = field->score;
 	do
 	{
-		if (write_field(field, array->tetris[i], pos) == false)
+		if (write_field(field, array->tetris[i], pos, 1) == false)
 			continue;
 
 		state->positions[i] = pos;

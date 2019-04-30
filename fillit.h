@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 07:20:11 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 21:03:10 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@
 
 #define				MAX_SCORE 11
 #define				MAX_TETRI 26
-
-typedef enum		e_block
-{
-	b_empty = 0,
-	b_filled = 1,
-}					t_block;
 
 typedef struct		s_pos
 {
@@ -66,12 +60,13 @@ bool				read_file(t_array *out, char *name);
 
 void				display_field(const t_field *field);
 void				display_tetri(const t_tetri *tetri);
+void				display_solution(const t_array *tets, const t_pos *sol);
 void				display_usage();
 
 void				fillit(const t_array *array, t_field *field, t_state *state, t_coord i);
+void				unwrite_field(t_field *field, t_tetri tetri, t_pos pos);
 
 t_field				init_field();
 bool				check_field(t_field *field, t_tetri tetri, t_pos pos);
-bool				write_field(t_field *field, t_tetri tetri, t_pos pos);
-void				unwrite_field(t_field *field, t_tetri tetri, t_pos pos);
+bool				write_field(t_field *field, t_tetri tetri, t_pos pos, t_block val);
 #endif

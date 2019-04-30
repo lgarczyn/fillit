@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 17:45:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/04/30 07:15:20 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 20:56:34 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void				shift_tetri(t_tetri *tetri, t_pos min_pos)
 		if (x < 4 - min_pos.x && y < 4 - min_pos.y)
 			tetri->data[y][x] = tetri->data[y + min_pos.y][x + min_pos.x];
 		else
-			tetri->data[y][x] = b_empty;
+			tetri->data[y][x] = 0;
 		x++;
 		if (x == 4)
 		{
@@ -50,7 +50,7 @@ void				normalize_tetri(t_tetri *tetri) // work in progress
 	y = 0;
 	while (y < 4)
 	{
-		if (tetri->data[y][x] == b_filled)
+		if (tetri->data[y][x])
 		{
 			min_pos.x = MIN(x, min_pos.x);
 			min_pos.y = MIN(y, min_pos.y);
@@ -96,7 +96,7 @@ bool				validate_tetri(const t_tetri *tetri)
 	ret = 0;
 	while (pos.y < 4)
 	{
-		if (tetri->data[pos.y][pos.x] == b_filled)
+		if (tetri->data[pos.y][pos.x])
 			ret += count_neighbours(pos, tetri);
 		pos.x++;
 		if (pos.x == 4)
@@ -116,9 +116,9 @@ bool				read_line(char *line, t_block *blocks)
 	while (++line_pos < 4)
 	{
 		if (line[line_pos] == '.')
-			blocks[line_pos] = b_empty;
+			blocks[line_pos] = 0;
 		else if (line[line_pos] == '#')
-			blocks[line_pos] = b_filled;
+			blocks[line_pos] = 1;
 		else
 			return (false);
 	}

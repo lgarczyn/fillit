@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 20:39:36 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/26 21:06:28 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 20:28:11 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,28 @@ void				display_field(const t_field *field)
 		x = 0;
 		while (x < field->score)
 		{
-			ft_putchar(field->blocks[y][x] ? '#' : '.');
+			ft_putchar(field->blocks[y][x] ? 'A' + field->blocks[y][x] - 1 : '.');
 			x++;
 		}
 		ft_putchar('\n');
 		x = 0;
 		y++;
 	}
+}
+
+void				display_solution(const t_array *tets, const t_pos *sol)
+{
+	t_field			field;
+	t_coord			i;
+
+	bzero(&field, sizeof(field));
+	i = 0;
+	while (i < tets->count)
+	{
+		write_field(&field, tets->tetris[i], sol[i], i + 1);
+		i++;
+	}
+	display_field(&field);
 }
 
 void				display_tetri(const t_tetri *tetri)
