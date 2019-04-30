@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 23:28:53 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/05/01 00:16:38 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/05/01 00:21:43 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,6 @@ void					id_tetri(t_tetri *tetri)
 			tetri->id = i;
 			return ;
 		}
+		i++;
 	}
 }
