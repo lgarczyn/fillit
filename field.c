@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 18:11:51 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/29 20:28:38 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 04:47:47 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ bool				write_field(t_field *field, t_tetri tetri, t_pos pos)
 	if (check_field(field, tetri, pos) == false)
 		return (false);
 	y = 0;
-	while (y < 4)
+	while (y < tetri.height)
 	{
 		x = 0;
-		while (x < 4)
+		while (x < tetri.width)
 		{
-			field->blocks[pos.y + y][pos.x + x] = tetri.data[y][x];
+			field->blocks[pos.y + y][pos.x + x] |= tetri.data[y][x];
 			x++;
 		}
 		x = 0;
@@ -67,4 +67,24 @@ bool				write_field(t_field *field, t_tetri tetri, t_pos pos)
 	field->score = MAX(field->score,
 		MAX(pos.x + tetri.width, pos.y + tetri.height));
 	return (true);
+}
+
+void				unwrite_field(t_field *field, t_tetri tetri, t_pos pos)
+{
+	t_coord			x;
+	t_coord			y;
+
+	y = 0;
+	while (y < tetri.height)
+	{
+		x = 0;
+		while (x < tetri.width)
+		{
+			if (tetri.data[y][x])
+				field->blocks[pos.y + y][pos.x + x] = b_empty;
+			x++;
+		}
+		x = 0;
+		y++;
+	}
 }

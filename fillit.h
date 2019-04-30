@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/29 20:30:14 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 03:23:35 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,23 @@ typedef struct		s_score
 	size_t			deviation;
 }					t_score;
 
+typedef struct	s_solution {
+	t_pos		positions[MAX_TETRI];
+	t_coord		score;
+}				t_solution;
+
 bool				read_tetri(int fd, t_tetri *out);
 bool				validate_tetri(const t_tetri *tetri);
 bool				read_file(t_array *out, char *name);
-
-t_field				*fillit(t_field *field, t_array *array, t_score *sc);
 
 void				display_field(const t_field *field);
 void				display_tetri(const t_tetri *tetri);
 void				display_usage();
 
+void				fillit(const t_array *array, t_field *field, t_solution *solution, t_solution *best_solution, t_coord i);
+
 t_field				init_field();
-void				free_field(t_field *field);
-void				increase_field(t_field *field, size_t size);
 bool				check_field(t_field *field, t_tetri tetri, t_pos pos);
 bool				write_field(t_field *field, t_tetri tetri, t_pos pos);
+void				unwrite_field(t_field *field, t_tetri tetri, t_pos pos);
 #endif

@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 19:54:44 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/29 20:44:09 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/04/30 04:48:12 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 #include "fillit.h"
 #include <stdint.h>
 
+#include <stdio.h>
+
 int				main(int argc, char **argv)
 {
 	t_array		tetris;
-	t_field		field;
+	
+	t_field		*field;
+
+
+	field = ft_memalloc(sizeof(t_field));
+	
 
 	if (argc != 2)
 	{
@@ -29,17 +36,19 @@ int				main(int argc, char **argv)
 		ft_putstr("Error: corrupted file\n");
 		return (1);
 	}
-	field = init_field();
+	*field = init_field();
+
+	t_solution	state = {};
+	t_solution	best_solution = {};
+
+	best_solution.score = 255;
+
+	fillit(&tetris, field, &state, &best_solution, 0);
 
 	for (size_t i = 0; i < tetris.count; i++)
 	{
-		display_tetri(&tetris.tetris[i]);
-		write_field(&field, tetris.tetris[i], (t_pos){i * 4, 0});
-		ft_putstr("\n");
+		printf("%i %i\n", best_solution.positions[i].x, best_solution.positions[i].y);
 	}
-	display_field(&field);
 
-	//result = fillit(&field, &tetris, &best_score);
-	//display_field(result);
 	return (0);
 }

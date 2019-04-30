@@ -17,6 +17,7 @@ SRC =	get_next_line.c \
 		read_file.c \
 		read_tetri.c \
 		display.c \
+		fillit.c \
 		main.c
 
 HEADERS =	libft/libft.h \
