@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 00:07:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/05/08 12:26:06 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/05/08 12:38:39 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,20 @@ int					count_neighbours(t_pos pos, const t_tetri *tetri)
 bool				validate_tetri(const t_tetri *tetri)
 {
 	t_pos	pos;
-	int		ret;
+	int		ngh;
+	int		blocks;
 
 	pos.x = 0;
 	pos.y = 0;
-	ret = 0;
+	ngh = 0;
+	blocks = 0;
 	while (pos.y < 4)
 	{
 		if (tetri->data[pos.y][pos.x])
-			ret += count_neighbours(pos, tetri);
+		{
+			blocks++;
+			ngh += count_neighbours(pos, tetri);
+		}
 		pos.x++;
 		if (pos.x == 4)
 		{
@@ -99,5 +104,7 @@ bool				validate_tetri(const t_tetri *tetri)
 			pos.y++;
 		}
 	}
-	return ((ret == 6 || ret == 8) ? true : false);
+	if (blocks != 4)
+		return (false);
+	return ((ngh == 6 || ngh == 8) ? true : false);
 }
