@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 17:45:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/05/01 00:15:10 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/05/08 12:15:14 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,5 @@ bool				read_tetri(int fd, t_tetri *out)
 	if (validate_tetri(out) == false)
 		return (false);
 	normalize_tetri(out);
-	id_tetri(out);
 	return (true);
 }
