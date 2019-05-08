@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 00:07:52 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/05/01 01:17:12 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/05/08 12:26:06 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void				normalize_tetri(t_tetri *tetri)
 	{
 		if (tetri->data[pos.y][pos.x])
 		{
-			min_pos = (t_pos){MIN(pos.x, min_pos.x), MIN(pos.y, min_pos.y)};
-			max_pos = (t_pos){MAX(pos.x, max_pos.x), MAX(pos.y, max_pos.y)};
+			min_pos = ft_min_pos(min_pos, pos);
+			max_pos = ft_max_pos(max_pos, pos);
 		}
 		pos.x++;
 		if (pos.x == 4)

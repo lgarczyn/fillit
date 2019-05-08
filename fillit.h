@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:41:37 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/05/08 12:15:04 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/05/08 12:26:26 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 # define FILLIT_H
 # include <stdbool.h>
 # include <stdlib.h>
-# include "types.h"
+# include <stdint.h>
 
 # define MAX_SCORE 16
 # define MAX_TETRI 26
 # define TET_COUNT 19
+
+typedef int8_t		t_coord;
+typedef uint32_t	t_uint;
+typedef uint8_t		t_block;
 
 typedef struct		s_pos
 {
@@ -52,6 +56,11 @@ typedef struct		s_state
 	t_pos			highest_pos[TET_COUNT];
 	t_coord			size;
 }					t_state;
+
+t_coord				ft_min(t_coord a, t_coord b);
+t_coord				ft_max(t_coord a, t_coord b);
+t_pos				ft_max_pos(t_pos a, t_pos b);
+t_pos				ft_min_pos(t_pos a, t_pos b);
 
 t_coord				get_ideal_score(t_array *array);
 bool				read_tetri(int fd, t_tetri *out);

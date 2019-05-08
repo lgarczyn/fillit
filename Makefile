@@ -19,12 +19,12 @@ SRC =	get_next_line.c \
 		validate_tetri.c \
 		display.c \
 		fillit.c \
+		tools.c \
 		main.c
 
 HEADERS =	libft/libft.h \
 			get_next_line.h \
 			fillit.h \
-			types.h \
 
 OBJ = $(SRC:.c=.o)
 

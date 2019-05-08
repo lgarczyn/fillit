@@ -6,7 +6,7 @@
 /*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 19:07:42 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/04/26 19:42:05 by lgarczyn         ###   ########.fr       */
+/*   Updated: 2019/05/08 12:24:22 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 # define OUT 0
 # define IN 1
 # define ERR 2
-
-# define MIN(a,b) (((a)<(b))?(a):(b))
-# define MAX(a,b) (((a)>(b))?(a):(b))
 
 # include <stdlib.h>
 # include <string.h>

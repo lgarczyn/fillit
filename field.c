@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   field.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 18:11:51 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 23:41:46 by brjorgen         ###   ########.fr       */
+/*   Updated: 2019/05/08 12:25:25 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ bool		write_field(t_field *field, t_tetri tetri, t_pos pos, t_block value)
 		x = 0;
 		y++;
 	}
-	field->score = MAX(field->score,
-		MAX(pos.x + tetri.width, pos.y + tetri.height));
+	field->score = ft_max(field->score,
+		ft_max(pos.x + tetri.width, pos.y + tetri.height));
 	return (true);
 }
 
