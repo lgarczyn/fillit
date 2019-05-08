@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brjorgen <brjorgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lgarczyn <lgarczyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 19:54:44 by lgarczyn          #+#    #+#             */
-/*   Updated: 2019/04/30 23:49:25 by brjorgen         ###   ########.fr       */
+/*   Updated: 2019/05/08 12:52:45 by lgarczyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 #include <stdint.h>
-
-#include <stdio.h>
 
 int				main(int argc, char **argv)
 {
